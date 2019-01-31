@@ -1,3 +1,4 @@
 # React-Native-Avance-Random-Fact
 
-Une simple animation d'un carré, avec la méthode spring de Animated
+Création et affichage du composant FactCard qui affiche un fait aléatoire avec une image aléatoire.
+On y trouve aussi un bouton permettan d'être redirigé vers la source web du fait.
