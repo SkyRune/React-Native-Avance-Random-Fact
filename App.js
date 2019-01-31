@@ -1,21 +1,28 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Animated } from "react-native";
+import FactCard from "./components/fact-card";
+import axios from "axios";
 
 const RANDOM_FACT_URL =
   "http://randomuselessfact.appspot.com/random.json?language=en";
 
 export default class App extends Component {
-  componentWillMount() {
-    this.position = new Animated.ValueXY(0, 0);
-    Animated.spring(this.position, {
-      toValue: { x: 200, y: 300 }
-    }).start();
+  constructor(props) {
+    super(props);
+    this.state = { fact: undefined };
+    axios.get(RANDOM_FACT_URL).then(response => {
+      this.setState({ fact: response.data });
+    });
   }
   render() {
     return (
-      <Animated.View style={this.position.getLayout()}>
-        <View style={styles.square} />
-      </Animated.View>
+      <View style={styles.container}>
+        <Text style={{ fontSize: 30, marginBottom: 50 }}>Fact generator</Text>
+        {this.state.fact
+          ? <FactCard fact={this.state.fact} />
+          : <Text>Loading...</Text>}
+
+      </View>
     );
   }
 }
