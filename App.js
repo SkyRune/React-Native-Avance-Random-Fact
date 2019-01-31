@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Animated } from "react-native";
-import FactCard from "./components/fact-card";
-import axios from "axios";
 
 const RANDOM_FACT_URL =
   "http://randomuselessfact.appspot.com/random.json?language=en";
