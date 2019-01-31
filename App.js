@@ -11,7 +11,10 @@ export default class App extends Component {
       toValue: { x: 200, y: 300 }
     }).start();
   }
-  render() {
+  render() {  
+  // Un seul render est appelé,
+  // par contre "this.position" va changer de nombreuse fois et donc le style de Animated.View va être updaté.
+  // Les animations n'utilise pas le système de rendering.
     return (
       <Animated.View style={this.position.getLayout()}>
         <View style={styles.square} />
