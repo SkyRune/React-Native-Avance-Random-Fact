@@ -10,7 +10,7 @@ import {
 // a quoi ca doit ressembler ? https://giphy.com/gifs/animation-illustration-motion-26mkhMYkitO7DoJuU/fullscreen
 const RANDOM_FACT_URL =
   "http://randomuselessfact.appspot.com/random.json?language=en";
-const PICTURE_LIST_URL = "https://picsum.photos/150/200?image=";
+const PICTURE_LIST_URL = `https://picsum.photos/${hp("30%")}/${hp("90%")}?image=`;
 const MAX_LEFT_ROTATION_DISTANCE = wp("-150%");
 const MAX_RIGHT_ROTATION_DISTANCE = wp("150%");
 const LEFT_TRESHOLD_BEFORE_SWIPE = wp("-50%");
