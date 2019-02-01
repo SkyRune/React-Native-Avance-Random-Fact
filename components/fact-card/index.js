@@ -1,12 +1,14 @@
 import React, { Component } from "react";
-import { Card } from "react-native-elements";
 import { Text, Button, Linking, ScrollView, View, Image } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from "react-native-responsive-screen";
-const RANDOM_IMG_URL = "https://picsum.photos/150/200?image=";
+
 class FactCard extends Component {
+  goToTop = () => {
+    this.scrollView.scrollTo({ x: 0, y: 0, animated: true });
+  };
   render() {
     return (
       <View
@@ -24,7 +26,13 @@ class FactCard extends Component {
           source={{ uri: this.props.fact.image }}
           style={{ width: wp("90%"), height: hp("30%") }}
         />
-        <ScrollView height={hp("10%")}>
+        <ScrollView
+          ref={scrollViewReference => {
+            this.scrollView = scrollViewReference;
+          }}
+          height={hp("10%")}
+          onScrollEndDrag={this.goToTop}
+        >
           <Text
             multiline={true}
             style={{ padding: 10, marginBottom: hp("3%") }}
@@ -33,7 +41,6 @@ class FactCard extends Component {
           </Text>
         </ScrollView>
         <Button
-          style={{ marginTop: hp("5%") }}
           disabled={this.props.disabled}
           title="See the source"
           onPress={() => Linking.openURL(this.props.fact.source_url)}
