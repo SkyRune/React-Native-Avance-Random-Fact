@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Animated } from "react-native";
 
-const RANDOM_FACT_URL =
-  "http://randomuselessfact.appspot.com/random.json?language=en";
-
 export default class App extends Component {
   componentWillMount() {
     this.position = new Animated.ValueXY(0, 0);
@@ -24,12 +21,6 @@ export default class App extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    marginTop: 100
-  },
   square: {
     width: 100,
     height: 100,
